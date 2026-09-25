@@ -1,16 +1,30 @@
-const themeBtn = document.getElementById("themeBtn");
 
-themeBtn.addEventListener("click", function () {
+
+const themeBtn = document.getElementById("themeBtn");
+const footerThemeBtn = document.getElementById("footerThemeBtn");
+
+function toggleDarkMode() {
 
     document.body.classList.toggle("dark-mode");
 
     if (document.body.classList.contains("dark-mode")) {
-        themeBtn.textContent = "☀️";
-    } else {
-        themeBtn.textContent = "🌙";
-    }
 
-});
+        themeBtn.textContent = "☀️";
+        footerThemeBtn.textContent = "☀️ Light Mode";
+
+    } else {
+
+        themeBtn.textContent = "🌙";
+        footerThemeBtn.textContent = "🌙 Dark Mode";
+
+    }
+}
+
+
+
+themeBtn.addEventListener("click", toggleDarkMode);
+
+footerThemeBtn.addEventListener("click", toggleDarkMode);
 
 const contactForm = document.getElementById("contactForm");
 
@@ -28,7 +42,7 @@ contactForm.addEventListener("submit", function (event) {
         return;
     }
 
-                             
+
     if (email === "") {
         alert("Please enter your email.");
         return;
@@ -41,7 +55,7 @@ contactForm.addEventListener("submit", function (event) {
     }
 
 
-     if (message === "") {
+    if (message === "") {
         alert("Please enter your message.");
         return;
     }
@@ -53,6 +67,7 @@ contactForm.addEventListener("submit", function (event) {
 
 });
 
+
 const topBtn = document.getElementById("topBtn");
 
 
@@ -63,6 +78,7 @@ window.addEventListener("scroll", function () {
     } else {
         topBtn.style.display = "none";
     }
+
 });
 
 
@@ -73,4 +89,4 @@ topBtn.addEventListener("click", function () {
         behavior: "smooth"
     });
 
-    });
+});
