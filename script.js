@@ -1,92 +1,130 @@
-
-
-const themeBtn = document.getElementById("themeBtn");
-const footerThemeBtn = document.getElementById("footerThemeBtn");
-
-function toggleDarkMode() {
-
-    document.body.classList.toggle("dark-mode");
-
-    if (document.body.classList.contains("dark-mode")) {
-
-        themeBtn.textContent = "☀️";
-        footerThemeBtn.textContent = "☀️ Light Mode";
-
-    } else {
-
-        themeBtn.textContent = "🌙";
-        footerThemeBtn.textContent = "🌙 Dark Mode";
-
-    }
-}
+document.addEventListener("DOMContentLoaded", function () {
 
 
 
-themeBtn.addEventListener("click", toggleDarkMode);
+    const themeBtn = document.getElementById("themeBtn");
+    const footerThemeBtn = document.getElementById("footerThemeBtn");
 
-footerThemeBtn.addEventListener("click", toggleDarkMode);
+    function updateThemeButtons() {
 
-const contactForm = document.getElementById("contactForm");
+        const isDark = document.body.classList.contains("dark-mode");
 
-contactForm.addEventListener("submit", function (event) {
+        if (themeBtn) {
+            themeBtn.textContent = isDark ? "☀️" : "🌙";
+        }
 
-    event.preventDefault();
-
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const message = document.getElementById("message").value.trim();
-
-
-    if (name === "") {
-        alert("Please enter your name.");
-        return;
+        if (footerThemeBtn) {
+            footerThemeBtn.textContent =
+                isDark ? "☀️ Light Mode" : "🌙 Dark Mode";
+        }
     }
 
 
-    if (email === "") {
-        alert("Please enter your email.");
-        return;
+    function toggleDarkMode() {
+
+        document.body.classList.toggle("dark-mode");
+
+        const isDark =
+            document.body.classList.contains("dark-mode");
+
+        localStorage.setItem(
+            "theme",
+            isDark ? "dark" : "light"
+        );
+
+        updateThemeButtons();
     }
 
 
-    if (!email.includes("@")) {
-        alert("Please enter a valid email address.");
-        return;
+    if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark-mode");
+    }
+
+    updateThemeButtons();
+
+
+    if (themeBtn) {
+        themeBtn.addEventListener("click", toggleDarkMode);
+    }
+
+    if (footerThemeBtn) {
+        footerThemeBtn.addEventListener("click", toggleDarkMode);
     }
 
 
-    if (message === "") {
-        alert("Please enter your message.");
-        return;
+    const contactForm = document.getElementById("contactForm");
+
+    if (contactForm) {
+
+        contactForm.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            const name =
+                document.getElementById("name").value.trim();
+
+            const email =
+                document.getElementById("email").value.trim();
+
+            const message =
+                document.getElementById("message").value.trim();
+
+
+            if (name === "" || email === "" || message === "") {
+
+                alert("Please fill in all fields.");
+
+                return;
+            }
+
+
+            if (!email.includes("@")) {
+
+                alert("Please enter a valid email address.");
+
+                return;
+            }
+
+
+            alert(
+                "Thank you, " +
+                name +
+                "! Your message has been submitted successfully."
+            );
+
+            contactForm.reset();
+        });
     }
 
 
-    alert("Thank you! Your message has been submitted.");
 
-    contactForm.reset();
-
-});
+    const topBtn = document.getElementById("topBtn");
 
 
-const topBtn = document.getElementById("topBtn");
+    window.addEventListener("scroll", function () {
 
+        if (window.scrollY > 400) {
 
-window.addEventListener("scroll", function () {
+            topBtn.style.display = "block";
 
-    if (window.scrollY > 400) {
-        topBtn.style.display = "block";
-    } else {
-        topBtn.style.display = "none";
-    }
+        } else {
 
-});
+            topBtn.style.display = "none";
+        }
 
-
-topBtn.addEventListener("click", function () {
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
     });
+
+
+    if (topBtn) {
+
+        topBtn.addEventListener("click", function () {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        });
+    }
 
 });
