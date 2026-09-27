@@ -5,16 +5,15 @@
     scroll-behavior: smooth;
 }
 
-              
-
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background:#f8fafc;
+    background: #f8fafc;
     color: #1e293b;
     line-height: 1.6;
-    transition: 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
 
-  a {
+a {
     text-decoration: none;
     color: inherit;
 }
@@ -24,7 +23,7 @@ button {
 }
 
 
-  header {
+header {
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -38,11 +37,16 @@ button {
     justify-content: space-between;
     padding: 0 7%;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+    transition: background-color 0.3s ease;
 }
 
 .logo {
     font-size: 22px;
     font-weight: bold;
+}
+
+.logo span {
+    color: #6366f1;
 }
 
 .nav-links {
@@ -64,13 +68,18 @@ button {
 .theme-btn {
     border: none;
     background: #eef2ff;
+    color: #1e293b;
     width: 40px;
     height: 40px;
     border-radius: 50%;
     cursor: pointer;
     font-size: 18px;
+    transition: 0.3s;
 }
 
+.theme-btn:hover {
+    transform: scale(1.08);
+}
 
 
 .hero {
@@ -79,6 +88,7 @@ button {
     align-items: center;
     padding: 80px 7%;
     background: linear-gradient(135deg, #eef2ff, #f8fafc);
+    transition: background 0.3s ease;
 }
 
 .hero-content {
@@ -115,6 +125,7 @@ button {
     color: #64748b;
 }
 
+
 .hero-buttons {
     margin-top: 30px;
     display: flex;
@@ -139,16 +150,21 @@ button {
     opacity: 0.9;
 }
 
-.secondary-btn {
+.outline-btn {
     background: transparent;
     color: #6366f1;
     border: 2px solid #6366f1;
 }
 
+.outline-btn:hover {
+    background: #6366f1;
+    color: white;
+}
 
 
 .section {
     padding: 90px 7%;
+    transition: background-color 0.3s ease;
 }
 
 .section-title {
@@ -168,8 +184,6 @@ button {
     margin-top: 5px;
 }
 
-
-
 .about-content {
     max-width: 1100px;
     margin: auto;
@@ -184,6 +198,7 @@ button {
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .about-card h3 {
@@ -211,8 +226,6 @@ button {
     color: #64748b;
     font-size: 14px;
 }
-
-
 
 
 .skills-section {
@@ -255,8 +268,6 @@ button {
 }
 
 
-
-
 .education-card {
     max-width: 900px;
     margin: auto;
@@ -296,7 +307,6 @@ button {
     border-radius: 20px;
     font-size: 12px;
 }
-
 
 
 .projects-section {
@@ -358,8 +368,6 @@ button {
 }
 
 
-
-
 .contact-container {
     max-width: 1000px;
     margin: auto;
@@ -406,13 +414,13 @@ button {
     font-family: inherit;
     font-size: 14px;
     outline: none;
+    transition: 0.3s;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
     border-color: #6366f1;
 }
-
 
 
 footer {
@@ -440,6 +448,11 @@ footer {
     padding: 10px 16px;
     border-radius: 8px;
     cursor: pointer;
+    transition: 0.3s;
+}
+
+.footer-theme-btn:hover {
+    background: #1e293b;
 }
 
 .footer-bottom {
@@ -450,7 +463,6 @@ footer {
     color: #94a3b8;
     font-size: 13px;
 }
-
 
 
 .top-btn {
@@ -466,8 +478,8 @@ footer {
     font-size: 20px;
     cursor: pointer;
     display: none;
+    z-index: 999;
 }
-
 
 
 
@@ -476,56 +488,151 @@ body.dark-mode {
     color: #e2e8f0;
 }
 
+
 body.dark-mode .navbar {
     background: #1e293b;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
 }
 
-body.dark-mode .hero {
-    background: #0f172a;
-}
-
-body.dark-mode .hero h2 {
-    color: #cbd5e1;
-}
-
-body.dark-mode .hero p,
-body.dark-mode .about-card p,
-body.dark-mode .info-box p,
-body.dark-mode .skill-card p,
-body.dark-mode .education-details p,
-body.dark-mode .project-card p,
-body.dark-mode .contact-info > p,
-body.dark-mode .contact-item span {
-    color: #94a3b8;
-}
-
-body.dark-mode .section,
-body.dark-mode .skills-section,
-body.dark-mode .projects-section {
-    background: #0f172a;
-}
-
-body.dark-mode .about-card,
-body.dark-mode .info-box,
-body.dark-mode .skill-card,
-body.dark-mode .education-card,
-body.dark-mode .project-card {
-    background: #1e293b;
-}
-
-body.dark-mode .contact-form input,
-body.dark-mode .contact-form textarea {
-    background: #1e293b;
-    color: white;
-    border-color: #475569;
+body.dark-mode .logo {
+    color: #ffffff;
 }
 
 body.dark-mode .nav-links a {
     color: #e2e8f0;
 }
 
+body.dark-mode .nav-links a:hover {
+    color: #818cf8;
+}
+
+
 body.dark-mode .theme-btn {
     background: #334155;
+    color: #ffffff;
+}
+
+
+body.dark-mode .hero {
+    background: #0f172a;
+}
+
+body.dark-mode .hero h1 {
+    color: #f8fafc;
+}
+
+body.dark-mode .hero h2 {
+    color: #cbd5e1;
+}
+
+body.dark-mode .hero p {
+    color: #94a3b8;
+}
+
+
+body.dark-mode .section {
+    background: #0f172a;
+}
+
+body.dark-mode .skills-section,
+body.dark-mode .projects-section {
+    background: #111827;
+}
+
+
+body.dark-mode .about-card,
+body.dark-mode .info-box {
+    background: #1e293b;
+    color: #e2e8f0;
+}
+
+body.dark-mode .about-card p,
+body.dark-mode .info-box p {
+    color: #94a3b8;
+}
+
+
+
+
+body.dark-mode .skill-card {
+    background: #1e293b;
+    color: #e2e8f0;
+}
+
+body.dark-mode .skill-card p {
+    color: #94a3b8;
+}
+
+
+
+
+body.dark-mode .education-card {
+    background: #1e293b;
+    color: #e2e8f0;
+}
+
+body.dark-mode .education-details p {
+    color: #94a3b8;
+}
+
+body.dark-mode .education-tags span {
+    background: #312e81;
+    color: #c7d2fe;
+}
+
+
+
+
+body.dark-mode .project-card {
+    background: #1e293b;
+    color: #e2e8f0;
+}
+
+body.dark-mode .project-card p {
+    color: #94a3b8;
+}
+
+body.dark-mode .project-tech span {
+    background: #312e81;
+    color: #c7d2fe;
+}
+
+
+
+body.dark-mode .contact-info {
+    color: #e2e8f0;
+}
+
+body.dark-mode .contact-info > p,
+body.dark-mode .contact-item span {
+    color: #94a3b8;
+}
+
+
+
+
+body.dark-mode .contact-form input,
+body.dark-mode .contact-form textarea {
+    background: #1e293b;
+    color: #ffffff;
+    border-color: #475569;
+}
+
+body.dark-mode .contact-form input::placeholder,
+body.dark-mode .contact-form textarea::placeholder {
+    color: #94a3b8;
+}
+
+
+
+body.dark-mode footer {
+    background: #020617;
+}
+
+body.dark-mode .footer-theme-btn {
+    background: #1e293b;
+    color: #ffffff;
+    border-color: #475569;
 }
 
 
@@ -556,6 +663,8 @@ body.dark-mode .theme-btn {
         grid-template-columns: 1fr;
     }
 }
+
+
 
 
 @media (max-width: 600px) {
@@ -589,6 +698,10 @@ body.dark-mode .theme-btn {
         font-size: 20px;
     }
 
+    .hero p {
+        font-size: 16px;
+    }
+
     .section {
         padding: 70px 5%;
     }
@@ -614,5 +727,6 @@ body.dark-mode .theme-btn {
         flex-direction: column;
         text-align: center;
     }
+
 }
-  
+
